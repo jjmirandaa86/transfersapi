@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateOfficesTable extends Migration
+class CreateCentersTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,22 +13,22 @@ class CreateOfficesTable extends Migration
      */
     public function up()
     {
-        Schema::create('offices', function (Blueprint $table) {
-            $table->string('idOffice', 4)
-                ->primary()
-                ->comment('Codigo de la Oficina');
+        Schema::create('centers', function (Blueprint $table) {
             $table->string('idCentre', 4)
+                ->primary()
+                ->comment('Codigo del centro suministrador');
+            $table->unsignedBigInteger('idRegion')
                 ->nullable(false)
-                ->comment('Codigo del centro');
+                ->comment('Codigo de la Region');
             $table->string('name', 30)
                 ->nullable(false)
-                ->comment('Nombr de la Oficina');
+                ->comment('Nombre del centro');
             $table->string('state', 1)
                 ->default('A')
-                ->comment('Si la oficina esta Activo o Inactivo');
+                ->comment('Si el centro esta Activo o Inactivo');
             $table->timestamps();
 
-            $table->foreign('idCentre')->references('idCentre')->on('centers');
+            $table->foreign('idRegion')->references('idRegion')->on('regions');
         });
     }
 
@@ -39,6 +39,6 @@ class CreateOfficesTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('offices');
+        Schema::dropIfExists('centers');
     }
 }

@@ -16,9 +16,9 @@ class CreateUsersTable extends Migration
         Schema::create('users', function (Blueprint $table) {
             $table->id('idUser')
                 ->comment('Codigo de Empleado y/o Identificacion');
-            $table->string('idOffice', 4)
+            $table->string('idCentre', 4)
                 ->nullable(false)
-                ->comment('Codigo de oficina');
+                ->comment('Codigo del centro');
             $table->string('firtsName', 50)
                 ->nullable(false)
                 ->comment('Nombre de la persona');
@@ -47,7 +47,7 @@ class CreateUsersTable extends Migration
                 ->comment('Si el usuario esta Activo o Inactivo');
             $table->timestamps();
 
-            $table->foreign('idOffice')->references('idOffice')->on('offices');
+            $table->foreign('idCentre')->references('idCentre')->on('centers');
         });
     }
 

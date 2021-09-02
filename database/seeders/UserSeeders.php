@@ -16,9 +16,9 @@ class UserSeeders extends Seeder
     {
         DB::table('users')->insert([
             'idUser' => 500000,
-            'idOffice' => "ES01",
-            'firtsName' => "ES01 GENERICO",
-            'lastName' => "ES01 GENERICO",
+            'idCentre' => "EC00",
+            'firtsName' => "EC00 GENERICO",
+            'lastName' => "EC00 GENERICO",
             'position' => "Entregador",
             'email' => "501101@cbc.co",
             'password' => "12345",
