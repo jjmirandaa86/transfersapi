@@ -5,7 +5,7 @@ namespace Database\Seeders;
 use Illuminate\Database\Seeder;
 use Illuminate\Support\Facades\DB;
 
-class UserSeeders extends Seeder
+class Usercenters extends Seeder
 {
     /**
      * Run the database seeds.
@@ -14,13 +14,17 @@ class UserSeeders extends Seeder
      */
     public function run()
     {
-        DB::table('users')->insert([
+        DB::table('usercenters')->insert([
             'idUser' => 500000,
-            'firtsName' => "EC00 GENERICO",
-            'lastName' => "EC00 GENERICO",
-            'position' => "Entregador",
-            'email' => "501101@cbc.co",
-            'password' => "12345",
+            'idCentre' => "EC00",
+            'state' => "A",
+            'created_at' => now(),
+            'updated_at' => now(),
+        ]);
+
+        DB::table('usercenters')->insert([
+            'idUser' => 500000,
+            'idCentre' => "EC25",
             'state' => "A",
             'created_at' => now(),
             'updated_at' => now(),

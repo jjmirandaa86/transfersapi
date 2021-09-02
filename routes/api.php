@@ -32,11 +32,11 @@ Route::group(['middleware' => 'auth:api'], function () {
     Route::get('/user/all', [UserController::class, 'show']);
     Route::get('/user/id/{idUser}', [UserController::class, 'showIdUser']);
     Route::get('/user/email/{email}', [UserController::class, 'showEmail']);
+    Route::delete('/user/{idUser}', [UserController::class, 'destroy']);
+    Route::put('/user', [UserController::class, 'update']);
 });
 
 
-Route::delete('/user/{idUser}', [UserController::class, 'destroy']);
-Route::put('/user', [UserController::class, 'update']);
 
 //RUTAS NO PROTEGIDAS POR TOKEN
 //===================================================================

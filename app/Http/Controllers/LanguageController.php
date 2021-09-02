@@ -11,6 +11,14 @@ class LanguageController extends Controller
     //======================
     public function show()
     {
-        return Language::orderBy('name', 'asc')->paginate(20);
+        $language =
+            Language::orderBy('name', 'asc')
+            ->paginate(20);
+
+        $data = $language;
+        //Oculto datos que no quiero mostrar
+        $language = $language->makeHidden(['created_at', 'updated_at']);
+        $data->data = $language;
+        return $data;
     }
 }
