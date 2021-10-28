@@ -16,7 +16,7 @@ class Usercenters extends Seeder
     {
         DB::table('usercenters')->insert([
             'idUser' => 500000,
-            'idCentre' => "EC00",
+            'idCenter' => "EC00",
             'state' => "A",
             'created_at' => now(),
             'updated_at' => now(),
@@ -24,7 +24,7 @@ class Usercenters extends Seeder
 
         DB::table('usercenters')->insert([
             'idUser' => 500000,
-            'idCentre' => "EC25",
+            'idCenter' => "EC25",
             'state' => "A",
             'created_at' => now(),
             'updated_at' => now(),

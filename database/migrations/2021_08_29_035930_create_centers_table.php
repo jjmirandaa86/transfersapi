@@ -14,7 +14,7 @@ class CreateCentersTable extends Migration
     public function up()
     {
         Schema::create('centers', function (Blueprint $table) {
-            $table->string('idCentre', 4)
+            $table->string('idCenter', 4)
                 ->primary()
                 ->comment('Codigo del centro suministrador');
             $table->unsignedBigInteger('idRegion')

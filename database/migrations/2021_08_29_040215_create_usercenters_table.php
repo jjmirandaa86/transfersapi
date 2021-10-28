@@ -18,7 +18,7 @@ class CreateUsercentersTable extends Migration
             $table->unsignedBigInteger('idUser')
                 ->nullable(false)
                 ->comment('Codigo del usuario');
-            $table->string('idCentre', 4)
+            $table->string('idCenter', 4)
                 ->nullable(false)
                 ->comment('Codigo del centro');
             $table->string('state', 1)
@@ -28,7 +28,7 @@ class CreateUsercentersTable extends Migration
             $table->timestamps();
 
             $table->foreign('idUser')->references('idUser')->on('users');
-            $table->foreign('idCentre')->references('idCentre')->on('centers');
+            $table->foreign('idCenter')->references('idCenter')->on('centers');
         });
     }
 

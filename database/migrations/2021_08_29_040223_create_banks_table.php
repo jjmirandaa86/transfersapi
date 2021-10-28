@@ -26,6 +26,8 @@ class CreateBanksTable extends Migration
                 ->default('A')
                 ->comment('A Activo P Pasivo');
             $table->timestamps();
+
+            $table->foreign('idCountry')->references('idCountry')->on('countries');
         });
     }
 

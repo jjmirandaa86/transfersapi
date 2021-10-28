@@ -17,6 +17,9 @@ class CreateRoutesTable extends Migration
             $table->id('idRoute');
             $table->string('idOffice', 4)->nullable(false);
             $table->string('name', 30)->nullable(false);
+            $table->string('type', 1)
+                ->nullable(false)
+                ->default('E');
             $table->string('state', 1)->default('A');
             $table->timestamps();
 

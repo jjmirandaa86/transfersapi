@@ -17,7 +17,7 @@ class OfficeSeeders extends Seeder
         //GYE
         DB::table('offices')->insert([
             'idOffice' => "ES01",
-            'idCentre' => "EC00",
+            'idCenter' => "EC00",
             'name' => "Guayaquil Norte",
             'state' => "A",
             'created_at' => now(),
@@ -26,7 +26,7 @@ class OfficeSeeders extends Seeder
 
         DB::table('offices')->insert([
             'idOffice' => "ES02",
-            'idCentre' => "EC25",
+            'idCenter' => "EC25",
             'name' => "Guayaquil Sur",
             'state' => "A",
             'created_at' => now(),
@@ -35,7 +35,7 @@ class OfficeSeeders extends Seeder
 
         DB::table('offices')->insert([
             'idOffice' => "ES07",
-            'idCentre' => "EC00",
+            'idCenter' => "EC00",
             'name' => "Guayaquil Especiales",
             'state' => "A",
             'created_at' => now(),
@@ -45,7 +45,7 @@ class OfficeSeeders extends Seeder
         //UIO
         DB::table('offices')->insert([
             'idOffice' => "ES10",
-            'idCentre' => "EC03",
+            'idCenter' => "EC03",
             'name' => "Quito Sur",
             'state' => "A",
             'created_at' => now(),
@@ -54,7 +54,7 @@ class OfficeSeeders extends Seeder
 
         DB::table('offices')->insert([
             'idOffice' => "ES08",
-            'idCentre' => "EC02",
+            'idCenter' => "EC02",
             'name' => "Quito Norte",
             'state' => "A",
             'created_at' => now(),
@@ -63,7 +63,7 @@ class OfficeSeeders extends Seeder
 
         DB::table('offices')->insert([
             'idOffice' => "ES13",
-            'idCentre' => "EC03",
+            'idCenter' => "EC03",
             'name' => "Quito Especiales",
             'state' => "A",
             'created_at' => now(),

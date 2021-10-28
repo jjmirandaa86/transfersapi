@@ -63,7 +63,6 @@ class UserController extends Controller
         try {
             $user = new User();
             $user->idUser = $request->input('idUser');
-            $user->idCentre = $request->input('idCentre');
             $user->firtsName = $request->input('firtsName');
             $user->lastName = $request->input('lastName');
             $user->position = $request->input('position');
@@ -151,7 +150,6 @@ class UserController extends Controller
                     'data' => null
                 ]);
             } else {
-                $user->idCentre = $request->input('idCentre');
                 $user->idUser = $request->input('idUser');
                 $user->firtsName = $request->input('firtsName');
                 $user->lastName = $request->input('lastName');
@@ -203,36 +201,29 @@ class UserController extends Controller
                     $user->api_token = Str::random(255);
                     $user->save();
 
-                    $val = DB::table('users')
-                        ->join('accessusers', 'accessusers.idUser', '=', 'users.idUser')
-                        ->join('centers', 'centers.idCentre', '=', 'users.idCentre')
-                        ->join('regions', 'regions.idRegion', '=', 'centers.idRegion')
-                        ->join('countries', 'countries.idCountry', '=', 'regions.idCountry')
-                        ->select(
-                            "users.idUser",
-                            "users.firtsName",
-                            "users.lastName",
-                            "users.position",
-                            "users.profile",
-                            "users.email",
-                            "users.api_token",
-                            "users.state",
-                            "centers.idCentre",
-                            "centers.name as centreName",
-                            "regions.idRegion",
-                            "regions.name as regionsName",
-                            "countries.idCountry",
-                            "countries.name as countryName",
-                            "countries.currency",
-                            "countries.simbol"
-                        )
-                        ->where("users.idUser", $request->input('idUser'))
-                        ->get();
+                    //------------ GET DATA
+                    //SESSION
+                    $session = [
+                        'api_token' => $user->api_token,
+                        'date' => date("d.m.Y"),
+                        'hour' => date("H:i:s")
+                    ];
+
+                    //INFO
+                    $info = $user->makeHidden([
+                        'password',
+                        'api_token',
+                        'created_at',
+                        'updated_at'
+                    ]);
 
                     return json_encode([
                         'msg' => 'Login Exitoso',
                         'err' => false,
-                        'data' => $val,
+                        'data' => [
+                            'info' => $info,
+                            'session' => $session
+                        ],
                     ]);
                 } else {
                     return json_encode([

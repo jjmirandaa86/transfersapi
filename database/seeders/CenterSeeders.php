@@ -15,7 +15,7 @@ class CenterSeeders extends Seeder
     public function run()
     {
         DB::table('centers')->insert([
-            'idCentre' => "EC00",
+            'idCenter' => "EC00",
             'idRegion' => 3,
             'name' => "Guayaquil Norte",
             'state' => "A",
@@ -24,7 +24,7 @@ class CenterSeeders extends Seeder
         ]);
 
         DB::table('centers')->insert([
-            'idCentre' => "EC25",
+            'idCenter' => "EC25",
             'idRegion' => 3,
             'name' => "Guayaquil Sur",
             'state' => "A",
@@ -33,7 +33,7 @@ class CenterSeeders extends Seeder
         ]);
 
         DB::table('centers')->insert([
-            'idCentre' => "EC02",
+            'idCenter' => "EC02",
             'idRegion' => 4,
             'name' => "Quito Norte",
             'state' => "A",
@@ -42,7 +42,7 @@ class CenterSeeders extends Seeder
         ]);
 
         DB::table('centers')->insert([
-            'idCentre' => "EC03",
+            'idCenter' => "EC03",
             'idRegion' => 4,
             'name' => "Quito Sur",
             'state' => "A",

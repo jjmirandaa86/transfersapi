@@ -17,7 +17,7 @@ class CreateOfficesTable extends Migration
             $table->string('idOffice', 4)
                 ->primary()
                 ->comment('Codigo de la Oficina');
-            $table->string('idCentre', 4)
+            $table->string('idCenter', 4)
                 ->nullable(false)
                 ->comment('Codigo del centro');
             $table->string('name', 30)
@@ -28,7 +28,7 @@ class CreateOfficesTable extends Migration
                 ->comment('Si la oficina esta Activo o Inactivo');
             $table->timestamps();
 
-            $table->foreign('idCentre')->references('idCentre')->on('centers');
+            $table->foreign('idCenter')->references('idCenter')->on('centers');
         });
     }
 
