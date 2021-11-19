@@ -33,6 +33,20 @@ class RouteController extends Controller
         return $data;
     }
 
+    // GET DATA X VARIOS ID
+    //======================
+    public function showSeveralIdOffice(Request $request)
+    {
+        $route = Route::select("*")
+            ->whereIn('idOffice', $request->input('idsOffice'))
+            ->paginate(20);
+        $data = $route;
+        //Oculto datos que no quiero mostrar
+        $route = $route->makeHidden(['created_at', 'updated_at']);
+        $data->data = $route;
+        return $data;
+    }
+
     // // GET DATA ID
     // //======================
     public function showIdOffice($idOffice)

@@ -35,6 +35,20 @@ class CountryController extends Controller
         return $data;
     }
 
+    // GET DATA X VARIOS ID
+    //======================
+    public function showSeveralIdCountrys(Request $request)
+    {
+        $country = Country::select("*")
+            ->whereIn('idCountry', $request->input('idsCountry'))
+            ->paginate(20);
+        $data = $country;
+        //Oculto datos que no quiero mostrar
+        $country = $country->makeHidden(['created_at', 'updated_at']);
+        $data->data = $country;
+        return $data;
+    }
+
     // CREATE
     //======================
     public function create(Request $request)

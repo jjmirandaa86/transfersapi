@@ -33,6 +33,20 @@ class CenterController extends Controller
         return $data;
     }
 
+    // GET DATA X VARIOS ID
+    //======================
+    public function showSeveralIdCenter(Request $request)
+    {
+        $center = Center::select("*")
+            ->whereIn('idCenter', $request->input('idsCenter'))
+            ->paginate(20);
+        $data = $center;
+        //Oculto datos que no quiero mostrar
+        $center = $center->makeHidden(['created_at', 'updated_at']);
+        $data->data = $center;
+        return $data;
+    }
+
     // // GET DATA ID
     // //======================
     public function showIdRegion($idRegion)

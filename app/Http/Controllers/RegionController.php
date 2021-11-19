@@ -34,6 +34,20 @@ class RegionController extends Controller
         return $data;
     }
 
+    // GET DATA X VARIOS ID
+    //======================
+    public function showSeveralIdRegions(Request $request)
+    {
+        $region = Region::select("*")
+            ->whereIn('idRegion', $request->input('idsRegion'))
+            ->paginate(20);
+        $data = $region;
+        //Oculto datos que no quiero mostrar
+        $region = $region->makeHidden(['created_at', 'updated_at']);
+        $data->data = $region;
+        return $data;
+    }
+
     // GET DATA X PADRE COUNTRY
     //======================
     public function showCountry($idCountry)

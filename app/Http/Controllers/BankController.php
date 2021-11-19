@@ -25,6 +25,21 @@ class BankController extends Controller
             ->paginate(20);
     }
 
+    // GET DATA X VARIOS ID
+    //======================
+    public function showSeveralIdCountrys(Request $request)
+    {
+        $bank = Bank::select("*")
+            ->whereIn('idCountry', $request->input('idsCountry'))
+            ->paginate(20);
+        $data = $bank;
+        //Oculto datos que no quiero mostrar
+        $bank = $bank->makeHidden(['created_at', 'updated_at']);
+        $data->data = $bank;
+        return $data;
+    }
+
+
     // CREATE
     //======================
     public function create(Request $request)

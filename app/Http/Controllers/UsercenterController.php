@@ -35,7 +35,7 @@ class UsercenterController extends Controller
             ->paginate(20);
         $data = $user;
         //Oculto datos que no quiero mostrar
-        $user = $user->makeHidden(['id', 'state', 'created_at', 'updated_at']);
+        $user = $user->makeHidden(['id', 'idUser', 'state', 'created_at', 'updated_at']);
         $data->data = $user;
         return $data;
     }

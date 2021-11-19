@@ -33,6 +33,20 @@ class OfficeController extends Controller
         return $data;
     }
 
+    // GET DATA X VARIOS ID
+    //======================
+    public function showSeveralIdOffice(Request $request)
+    {
+        $office = Office::select("*")
+            ->whereIn('idCenter', $request->input('idsCenter'))
+            ->paginate(20);
+        $data = $office;
+        //Oculto datos que no quiero mostrar
+        $office = $office->makeHidden(['created_at', 'updated_at']);
+        $data->data = $office;
+        return $data;
+    }
+
     // GET DATA ID
     //======================
     public function showIdCenter($idCenter)

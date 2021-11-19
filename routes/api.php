@@ -10,6 +10,7 @@ use App\Http\Controllers\CountryController;
 use App\Http\Controllers\RegionController;
 use App\Http\Controllers\CenterController;
 use App\Http\Controllers\OfficeController;
+use App\Http\Controllers\PersonalizedController;
 use App\Http\Controllers\RouteController;
 use App\Http\Controllers\UsercenterController;
 
@@ -50,6 +51,7 @@ Route::group(['middleware' => 'auth:api'], function () {
     //=====================================
     Route::get('/bank/all', [BankController::class, 'all']);
     Route::get('/bank/country/{idBank}', [BankController::class, 'getDataXidCountry']);
+    Route::post('/bank/country/ids', [BankController::class, 'showSeveralIdCountrys']);
     Route::post('/bank', [BankController::class, 'create']);
     Route::delete('/bank/{idBank}', [BankController::class, 'destroyXIdBank']);
 
@@ -57,6 +59,7 @@ Route::group(['middleware' => 'auth:api'], function () {
     //=====================================
     Route::get('/country/all', [CountryController::class, 'show']);
     Route::get('/country/id/{idCountry}', [CountryController::class, 'showIdCountry']);
+    Route::post('/country/ids', [CountryController::class, 'showSeveralIdCountrys']);
     Route::post('/country', [CountryController::class, 'create']);
     Route::delete('/country/{idCountry}', [CountryController::class, 'destroy']);
     Route::put('/country', [CountryController::class, 'update']);
@@ -65,6 +68,7 @@ Route::group(['middleware' => 'auth:api'], function () {
     //=====================================
     Route::get('/region/all', [RegionController::class, 'show']);
     Route::get('/region/id/{idRegion}', [RegionController::class, 'showIdRegion']);
+    Route::post('/region/ids', [RegionController::class, 'showSeveralIdRegions']);
     Route::get('/region/country/{idCountry}', [RegionController::class, 'showCountry']);
     Route::post('/region', [RegionController::class, 'create']);
     Route::delete('/region/{idRegion}', [RegionController::class, 'destroy']);
@@ -74,6 +78,7 @@ Route::group(['middleware' => 'auth:api'], function () {
     //=====================================
     Route::get('/center/all', [CenterController::class, 'show']);
     Route::get('/center/id/{idCenter}', [CenterController::class, 'showIdCenter']);
+    Route::post('/center/ids', [CenterController::class, 'showSeveralIdCenter']);
     Route::get('/center/region/{idRegion}', [CenterController::class, 'showIdRegion']);
     Route::post('/center', [CenterController::class, 'create']);
     Route::delete('/center/{idCenter}', [CenterController::class, 'destroy']);
@@ -84,9 +89,19 @@ Route::group(['middleware' => 'auth:api'], function () {
     Route::get('/office/all', [OfficeController::class, 'show']);
     Route::get('/office/id/{idOffice}', [OfficeController::class, 'showIdOffice']);
     Route::get('/office/center/{idCenter}', [OfficeController::class, 'showIdCenter']);
+    Route::post('/office/center/ids', [OfficeController::class, 'showSeveralIdOffice']);
     Route::post('/office', [OfficeController::class, 'create']);
     Route::delete('/office/{idOffice}', [OfficeController::class, 'destroy']);
     Route::put('/office', [OfficeController::class, 'update']);
+
+    //Route
+    //=====================================
+    Route::post('/route/office/ids', [RouteController::class, 'showSeveralIdOffice']);
+
+
+    //Personalizados
+    //=====================================
+    Route::get('/personalized/id/{idUser}', [PersonalizedController::class, 'showDataUser']);
 });
 
 //Route
