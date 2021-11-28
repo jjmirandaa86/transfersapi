@@ -40,6 +40,9 @@ class CreateTransfersTable extends Migration
             $table->string('image', 100)
                 ->nullable(false)
                 ->comment('Ruta de Imagen Servidor');
+            $table->unsignedBigInteger('route')
+                ->nullable(false)
+                ->comment('Codigo de la ruta de entrega');
             $table->string('state', 1)
                 ->default('I')
                 ->comment('I Ingresada, A Aprobada, R Rechazado');

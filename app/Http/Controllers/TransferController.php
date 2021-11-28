@@ -61,6 +61,7 @@ class TransferController extends Controller
         $transfer->nameCustomer = $request->input('nameCustomer');
         $transfer->voucher = $request->input('voucher');
         $transfer->amount = $request->input('amount');
+        $transfer->route = $request->input('route');
         $transfer->image = $request->input('image');
         $transfer->state = $request->input('state');
         $transfer->save();

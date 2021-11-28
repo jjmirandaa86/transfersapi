@@ -14,6 +14,7 @@ use App\Http\Controllers\PersonalizedController;
 use App\Http\Controllers\RouteController;
 use App\Http\Controllers\UsercenterController;
 use App\Http\Controllers\TransferController;
+use App\Http\Controllers\StateController;
 
 /*
 |--------------------------------------------------------------------------
@@ -106,10 +107,13 @@ Route::group(['middleware' => 'auth:api'], function () {
     Route::post('/transfer/save', [TransferController::class, 'save']);
     Route::put('/transfer/status', [TransferController::class, 'changeStatus']);
 
+    //States
+    //=====================================
+    Route::post('/states/country/ids', [StateController::class, 'showStatesIdCountry']);
 
     //Personalizados
     //=====================================
-    Route::get('/personalized/id/{idUser}', [PersonalizedController::class, 'showDataUser']);
+    Route::get('/personalized/id/{idUser}', [StateController::class, 'showDataUser']);
 });
 
 //Route
