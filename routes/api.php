@@ -13,6 +13,7 @@ use App\Http\Controllers\OfficeController;
 use App\Http\Controllers\PersonalizedController;
 use App\Http\Controllers\RouteController;
 use App\Http\Controllers\UsercenterController;
+use App\Http\Controllers\TransferController;
 
 /*
 |--------------------------------------------------------------------------
@@ -97,6 +98,13 @@ Route::group(['middleware' => 'auth:api'], function () {
     //Route
     //=====================================
     Route::post('/route/office/ids', [RouteController::class, 'showSeveralIdOffice']);
+
+    //Transfers
+    //=====================================
+    Route::get('/transfer/id/{idUser}', [TransferController::class, 'showTransferIdUser']);
+    Route::post('/transfer/save/image', [TransferController::class, 'saveImage']);
+    Route::post('/transfer/save', [TransferController::class, 'save']);
+    Route::put('/transfer/status', [TransferController::class, 'changeStatus']);
 
 
     //Personalizados

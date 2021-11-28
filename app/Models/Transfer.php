@@ -7,5 +7,6 @@ use Illuminate\Database\Eloquent\Model;
 
 class Transfer extends Model
 {
+    protected $primaryKey = 'idTransfer';
     use HasFactory;
 }
