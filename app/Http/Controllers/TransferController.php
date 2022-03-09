@@ -2,8 +2,13 @@
 
 namespace App\Http\Controllers;
 
+use Illuminate\Support\Facades\DB;
+
 use Illuminate\Http\Request;
 use App\Models\Transfer;
+use App\Models\Region;
+use App\Models\Center;
+use App\Models\Office;
 
 class TransferController extends Controller
 {
@@ -15,6 +20,48 @@ class TransferController extends Controller
             ->where("idUser", $idUser)
             ->orderBy('created_at', 'desc')
             ->paginate(5);
+    }
+
+    // GET DATA X FILTER
+    //======================
+    public function showTransferIdUserFilter(Request $request)
+    {
+        $transfer = DB::table("transfers")
+            ->join("users", "users.idUser", "=", "transfers.idUser")
+            ->join("usercenters", "usercenters.idUser", "=", "users.idUser")
+            ->select('transfers.*', 'users.*', 'usercenters.*')
+            ->where("idUser", $request->input('idUser'))
+            ->get();
+        /*
+            ->join("regions", "regions.idRegion", "=", "transfers.idRegion")
+            ->join("centers", "centers.idCenter", "=", "transfers")
+            ->join("offices", "offices.idOffice", "=", "transfers")
+            
+            
+            ->orWhere('idCountry', $request->input('idCountry'))
+            ->orWhere('idBank', $request->input('idBank'))
+            ->orWhere('idRoute', $request->input('idRoute'))
+            ->orWhere('idState', $request->input('idState'))
+            ->whereBetween('created_at', [$request->input('dateStart'), $request->input('dateEnd')])
+            ->orWhere('idRegion', $request->input('idRegion'))
+            ->orWhere('idCenter', $request->input('idCenter'))
+            ->orWhere('idOffice', $request->input('idOffice'))*/
+
+        // ->paginate(20);
+        return $transfer;
+
+        /*
+$transfer->idCountry = $request->input('idCountry');
+        $transfer->idUser = $request->input('idUser');
+        $transfer->idBank = $request->input('idBank');
+        $transfer->idCustomer = $request->input('idCustomer');
+        $transfer->nameCustomer = $request->input('nameCustomer');
+        $transfer->voucher = $request->input('voucher');
+        $transfer->amount = $request->input('amount');
+        $transfer->route = $request->input('route');
+        $transfer->image = $request->input('image');
+        $transfer->state = $request->input('state');
+*/
     }
 
     // UPLOAD FILE

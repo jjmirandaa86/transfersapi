@@ -103,6 +103,10 @@ Route::group(['middleware' => 'auth:api'], function () {
     //Transfers
     //=====================================
     Route::get('/transfer/id/{idUser}', [TransferController::class, 'showTransferIdUser']);
+    Route::post(
+        '/transfer/filter',
+        [TransferController::class, 'showTransferIdUserFilter']
+    );
     Route::post('/transfer/save/image', [TransferController::class, 'saveImage']);
     Route::post('/transfer/save', [TransferController::class, 'save']);
     Route::put('/transfer/status', [TransferController::class, 'changeStatus']);
