@@ -138,7 +138,3 @@ Route::put('/route', [RouteController::class, 'update']);
 Route::get('/language/all', [LanguageController::class, 'show']);
 Route::post('/user', [UserController::class, 'create']);
 Route::post('/user/login', [UserController::class, 'login']);
-
-Route::get('u/{id}', function ($id) {
-    return 'User ' . $id;
-});
